@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="custom.css">
+    <title>Our little escrow Dapp</title>
+  </head>
+  <body>
+    <h1>Add Customer</h1>
+
+    <form id="add-form">
+      <div class="form-group">
+        <label for="isin">International Securities Identifier:</label>
+        <input value="" type="text" class="form-control" id="isin" aria-describedby="fromAddressHelp" placeholder="Enter ISIN" required="true">
+        <br>
+        <label for="organizationName">Organization Name:</label>
+        <input value="" type="text" class="form-control" id="organizationName" aria-describedby="fromAddressHelp" placeholder="Enter Name" required="true">
+        <br>
+        <label for="hasActivityStatus">Activity Status:</label>
+        <select value="" class="form-control" id="hasActivityStatus" aria-describedby="fromAddressHelp" required="true" style="width: max-content;">
+          <option value="true">Active</option>
+          <option value="false">Suspended</option>
+        </select>
+        <br>
+        <label for="businessClassifier">Business Classifier:</label>
+        <input value="" type="text" class="form-control" id="businessClassifier" aria-describedby="fromAddressHelp" placeholder="Enter Business Classifier" required="true">
+        <br>
+        <label for="registeredAddress">Registered Address:</label>
+        <input value="" type="text" class="form-control" id="registeredAddress" aria-describedby="fromAddressHelp" placeholder="Enter Address" required="true">
+        <br>
+        <label for="isDomeciledIn">ISO Country Code:</label>
+        <input value="" type="text" class="form-control" id="isDomeciledIn" aria-describedby="fromAddressHelp" placeholder="Enter Country Code" required="true">
+        <br>
+        <label for="sanctionStatus">Sanctioned Status:</label>
+        <select value="" class="form-control" id="sanctionStatus" aria-describedby="fromAddressHelp" required="true" style="width: max-content;">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="web3.min.js"></script>
+    <script src="contractAbi.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    if ( typeof web3 != 'undefined') {
+      web3 = new Web3(web3.currentProvider);
+    } else {
+      web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+    }
+
+    // var AMLContract = new web3.eth.Contract(abi, contractAddress);
+
+    $('#add-form').submit(function() {
+      event.preventDefault();
+      // var fromAddress = $('#fromAddress').val();
+      // var toAddress = $('#toAddress').val();
+      // var amount = $('#amount').val();
+      // if (web3.utils.isAddress(fromAddress) != true) {
+      //   alert('You did not enter a correct ethereum address for the sender address.');
+      //   return;
+      // }
+      // if (web3.utils.isAddress(toAddress) != true) {
+      //   alert('You did not enter a correct ethereum address for the recipient address.');
+      //   return;
+      // }
+      // if (amount == 0) {
+      //   alert('You must send more than 0 ETH.');
+      //   return;
+      // }
+    });
+    </script>
+
+    </body>
+</html>
