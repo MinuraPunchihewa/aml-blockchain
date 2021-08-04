@@ -51,7 +51,6 @@ contract AML{
     
     function deposit(address payable _receiver) external payable {
         require(msg.value > 0, "The deposit should be more than 0!");
-        sender = msg.sender;
-        receiver = _receiver;
+        _receiver.transfer(address(this).balance);
     }
 }
