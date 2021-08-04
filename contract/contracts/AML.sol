@@ -1,6 +1,13 @@
 pragma solidity >=0.4.18;
 
 contract AML{
+    struct Payment{
+        uint amount;
+        uint date;
+    }
+
+    uint threshold = 20;
+
     struct Org{
         uint international_securities_identifier;
         string organization_name;
@@ -10,12 +17,10 @@ contract AML{
         string isDomiciledIn;
         bool sanStatus;
         mapping(address => bool) admins;
+        Payment payment;
     }
     
     mapping(address => Org) public orgs;
-    
-    address public sender;
-    address payable public receiver;
     
     function addOrg(address org, uint _international_securities_identifier, string calldata _organization_name, bool _hasActivityStatus, string calldata _businessClassifier, string calldata _RegisteredAddress, string calldata _isDomiciledIn, bool _sanStatus) external{
         Org storage organization = orgs[org];
@@ -51,6 +56,7 @@ contract AML{
     
     function deposit(address payable _receiver) external payable {
         require(msg.value > 0, "The deposit should be more than 0!");
+        require(orgs[msg.sender].sanStatus == false, "You are not allowed to make deposits at the moment!");
         _receiver.transfer(address(this).balance);
     }
 }
